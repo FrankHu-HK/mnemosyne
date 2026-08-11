@@ -60,7 +60,6 @@ import tempfile
 import time
 import uuid
 from datetime import datetime, timezone
-import heapq
 
 VERSION = "4.0.0 Stable"
 MEMORY_TYPES = {
@@ -2017,7 +2016,7 @@ class CognitiveResolver:
                 results.append((score, fact))
 
         results.sort(key=lambda x: x[0], reverse=True)
-        return heapq.nlargest(10, results, key=lambda x: x[0])
+        return results[:10]
 
     # ---- Layer 6: Evidence Expansion ----
 
@@ -2479,7 +2478,6 @@ class MemoryBrain:
         self.enable_embeddings = enable_embeddings
         self.enable_graph = enable_graph
         self.stats_tracker = StatsTracker(base_dir) if enable_stats else None
-        self._stats_auto = False  # 默认关闭，需手动开启
 
     def ensure_init(self):
         self.store.ensure_init()
@@ -2523,22 +2521,16 @@ class MemoryBrain:
         self.store.append(record)
         if self.stats_tracker:
             self.stats_tracker.track_retain(len(content))
-        return (record, self.stats_tracker.summary()) if self._stats_auto else record
+        return record
 
-    def retain_batch(self, items, fast=False):
-        """批量writes 。items: [(content, mtype, kwargs), ...]
-        fast=True: 跳过实体抽取/嵌入/图谱构建（批量场景快 3-5x）"""
+    def retain_batch(self, items):
+        """批量writes 。items: [(content, mtype, kwargs), ...]"""
         records = []
         for item in items:
             content, mtype = item[0], item[1] if len(item) > 1 else "semantic"
             kwargs = item[2] if len(item) > 2 else {}
             rec = _build_record(content, mtype=mtype, **kwargs)
-            if fast:
-                rec["entities"] = []
-                rec["entities_detailed"] = []
-                rec["embedding"] = None
-                rec["graph_edges"] = []
-            elif self.embed_engine and self.enable_embeddings:
+            if self.embed_engine and self.enable_embeddings:
                 rec["embedding"] = self.embed_engine.encode(content)
             records.append(rec)
         self.store.append_batch(records)
@@ -2589,7 +2581,7 @@ class MemoryBrain:
             recalled_chars = sum(len(r[1].get("content", "")) if len(r) > 1 else 0 for r in results)
             latency_ms = (time.time() - t0) * 1000
             self.stats_tracker.track_recall(hit, recalled_chars, latency_ms)
-        return (results, self.stats_tracker.summary()) if self._stats_auto else results
+        return results
 
     # ---- Memory Reflection（增强版：认知级反思） ----
 
@@ -2916,7 +2908,7 @@ class MemoryBrain:
     # ---- 运行统计 ----
 
     def stats(self):
-        """返回运行统计字典。"""
+        """返回运行统计字典。需在构造时 enable_stats=True。"""
         if not self.stats_tracker:
             return {"error": "统计未启用，请用 MemoryBrain(base_dir=..., enable_stats=True)"}
         return self.stats_tracker.summary()
@@ -2927,12 +2919,6 @@ class MemoryBrain:
             print("统计未启用。")
         else:
             self.stats_tracker.print_summary()
-
-    def stats_auto(self, on=True):
-        """开启/关闭自动返回统计。开启后 retain()/recall() 返回值附带 stats 字典。
-        on=True → retain() 返回 (record, stats) 而非 record
-        on=True → recall() 返回 (results, stats) 而非 results"""
-        self._stats_auto = on
 
     def graph_path(self, from_e, to_e, max_depth=3):
         if not self.graph_store:
