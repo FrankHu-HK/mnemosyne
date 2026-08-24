@@ -2,10 +2,22 @@
   <img src="assets/banner.png" alt="Mnemosyne OS" width="100%">
 </p>
 
+<p align="center">
+  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.md"><img src="https://img.shields.io/badge/Lang-English-blue?style=for-the-badge" alt="English"></a>
+  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README_CN.md"><img src="https://img.shields.io/badge/Lang-中文-red?style=for-the-badge" alt="中文"></a>
+  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README_TW.md"><img src="https://img.shields.io/badge/Lang-繁體中文-red?style=for-the-badge" alt="繁體中文"></a>
+  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.es.md"><img src="https://img.shields.io/badge/Lang-Español-orange?style=for-the-badge" alt="Español"></a>
+  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.ru.md"><img src="https://img.shields.io/badge/Lang-Русский-blue?style=for-the-badge" alt="Русский"></a>
+  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.de.md"><img src="https://img.shields.io/badge/Lang-Deutsch-lightgrey?style=for-the-badge" alt="Deutsch"></a>
+  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.th.md"><img src="https://img.shields.io/badge/Lang-ไทย-blue?style=for-the-badge" alt="ไทย"></a>
+  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.ko.md"><img src="https://img.shields.io/badge/Lang-한국어-green?style=for-the-badge" alt="한국어"></a>
+  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.ja.md"><img src="https://img.shields.io/badge/Lang-日本語-red?style=for-the-badge" alt="日本語"></a>
+</p>
+
 # Mnemosyne OS ☤
 
 <p align="center">
-  <a href="https://pypi.org/project/mnemosyne-os/">Mnemosyne OS</a> | <a href="https://github.com/FrankHu-HK/mnemosyne">GitHub</a> | <a href="README_CN.md">中文文档</a>
+  <a href="https://pypi.org/project/mnemosyne-os/">Mnemosyne OS</a> | <a href="https://github.com/FrankHu-HK/mnemosyne">GitHub</a> | <a href="README_CN.md">Documentación en chino</a>
 </p>
 
 <p align="center">
@@ -23,42 +35,42 @@
   <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.ja.md"><img src="https://img.shields.io/badge/Lang-日本語-red?style=for-the-badge" alt="日本語"></a>
 </p>
 
-**Mnemosyne OS 7.0.0** — a zero-dependency (零依赖), local-first (本地优先) AI memory system (AI 记忆系统) with multi-tier forgetting (多层次遗忘), a hash-chain ledger (哈希链账本), a plugin SDK (插件 SDK), a local web dashboard (本地 Web 管理界面), and MCP (Model Context Protocol / 模型上下文协议) support.
+**Mnemosyne OS 7.0.0** — un sistema de memoria de IA sin dependencias, de prioridad local, con olvido multinivel, un libro de contabilidad de cadena hash, un SDK de plugins, un panel web local y soporte para MCP (Model Context Protocol).
 
-> The only AI memory engine whose **core requires zero third-party dependencies** (仅依赖 Python 标准库 3.8+) — no vector database (向量库), no LLM (大语言模型) runtime, no cloud lock-in. Runs on a laptop, a server, or serverless infra (无服务器架构).
+> El único motor de memoria de IA cuyo **núcleo no requiere dependencias de terceros** — solo usa la biblioteca estándar de Python 3.8+ — sin base de datos vectorial, sin entorno de ejecución LLM, sin dependencia de la nube. Funciona en una laptop, un servidor o infraestructura sin servidor.
 
-Use it as a **Python (Python 库) library**, a **CLI (命令行)**, an **HTTP API (API 接口)**, an **MCP server (MCP 服务器)**, or embed it via the **MCP (模型上下文协议)** stdio transport.
+Úsalo como una **biblioteca de Python**, una **CLI**, una **API HTTP**, un **servidor MCP**, o incorpóralo mediante el transporte stdio de **MCP**.
 
 <table>
-<tr><td><b>Zero-dependency core (零依赖核心)</b></td><td>Runs on the Python standard library alone. No numpy, no torch, no vector DB, no LLM required to store and recall memories.</td></tr>
-<tr><td><b>Multi-tier memory (多层次记忆)</b></td><td>Hot / warm / cold tiers with economic forgetting (遗忘经济学) — migrate low-value memories, never silently delete them.</td></tr>
-<tr><td><b>Hash-chain ledger (哈希链账本)</b></td><td>SHA-256 chained ledger — <code>verify_chain()</code> detects tampering and locates the exact corrupted record.</td></tr>
-<tr><td><b>Plugin SDK (插件 SDK)</b></td><td><code>VectorBackendPlugin</code> / <code>CryptoPlugin</code> / <code>RerankerPlugin</code> + official plugins (<code>numpy_vector</code>, <code>crypto</code>, <code>reranker</code>, <code>hrr</code>, <code>async</code>, <code>context-engine</code>).</td></tr>
-<tr><td><b>MCP server (MCP 服务器)</b></td><td>13 tools over stdio JSON-RPC, with token auth (令牌鉴权) and multi-tenant namespaces (多租户命名空间隔离).</td></tr>
-<tr><td><b>Web dashboard (Web 管理界面)</b></td><td>Tech-aesthetic local dark dashboard (本地科技感暗色面板), no external CDN — served from <code>web_server.py</code>.</td></tr>
-<tr><td><b>Async API (异步 API)</b></td><td><code>AsyncMemoryBrain</code> asyncio wrapper for high-throughput ingestion.</td></tr>
-<tr><td><b>Chinese-optimized (中文优化)</b></td><td>Bigram tokenization (二分词) + FTS5 + built-in synonym dictionary (内置同义词词典).</td></tr>
-<tr><td><b>Security notary (安全检查)</b></td><td>Detects credentials, invisible Unicode, and HTML injection; field-level redaction (字段级脱敏) before write.</td></tr>
+<tr><td><b>Núcleo sin dependencias</b></td><td>Se ejecuta únicamente con la biblioteca estándar de Python. No requiere numpy, torch, base de datos vectorial ni LLM para almacenar y recuperar memorias.</td></tr>
+<tr><td><b>Memoria multinivel</b></td><td>Niveles caliente / tibio / frío con olvido económico — migra memorias de bajo valor, nunca las elimina silenciosamente.</td></tr>
+<tr><td><b>Libro de contabilidad de cadena hash</b></td><td>Libro de contabilidad encadenado SHA-256 — <code>verify_chain()</code> detecta manipulaciones y localiza el registro corrupto exacto.</td></tr>
+<tr><td><b>SDK de plugins</b></td><td><code>VectorBackendPlugin</code> / <code>CryptoPlugin</code> / <code>RerankerPlugin</code> + plugins oficiales (<code>numpy_vector</code>, <code>crypto</code>, <code>reranker</code>, <code>hrr</code>, <code>async</code>, <code>context-engine</code>).</td></tr>
+<tr><td><b>Servidor MCP</b></td><td>13 herramientas sobre stdio JSON-RPC, con autenticación por token y espacios de nombres multiinquilino.</td></tr>
+<tr><td><b>Panel web</b></td><td>Panel local oscuro con estética tecnológica, sin CDN externo — servido desde <code>web_server.py</code>.</td></tr>
+<tr><td><b>API asíncrona</b></td><td><code>AsyncMemoryBrain</code> es un contenedor asyncio para ingesta de alto rendimiento.</td></tr>
+<tr><td><b>Optimizado para chino</b></td><td>Tokenización bigrama + FTS5 + diccionario de sinónimos integrado.</td></tr>
+<tr><td><b>Notario de seguridad</b></td><td>Detecta credenciales, Unicode invisible e inyección HTML; redacción a nivel de campo antes de escribir.</td></tr>
 </table>
 
 ---
 
-## Quick Install (快速安装)
+## Instalación rápida
 
-### From PyPI (PyPI 安装)
+### Desde PyPI
 
 ```bash
 pip install mnemosyne-os
 ```
 
-### Zero-dependency core (零依赖核心 — no pip install required)
+### Núcleo sin dependencias (no requiere pip install)
 
 ```bash
 # Core runs on the Python standard library alone
 python -c "from mnemosyne import MemoryBrain; print('Ready!')"
 ```
 
-### Development install (开发模式安装)
+### Instalación para desarrollo
 
 ```bash
 git clone https://github.com/FrankHu-HK/mnemosyne.git
@@ -68,9 +80,9 @@ pip install -e .
 
 ---
 
-## Getting Started (快速开始)
+## Primeros pasos
 
-### CLI (命令行)
+### CLI
 
 ```bash
 # Initialize the memory database
@@ -107,7 +119,7 @@ python mnemosyne.py --dir ./mem migrate --jsonl ./mem/index.jsonl
 python -m mnemosyne.webui.web_server --port 9090
 ```
 
-### Python API (Python 接口)
+### API de Python
 
 ```python
 from mnemosyne import MemoryBrain
@@ -134,7 +146,7 @@ hits = brain.search_conversations("Apple", session_id="session-1")
 snapshot = brain.build_context_prompt(query="Apple", max_chars=2000)
 ```
 
-### Async API (异步接口)
+### API asíncrona
 
 ```python
 import asyncio
@@ -150,46 +162,46 @@ async def main():
 asyncio.run(main())
 ```
 
-### MCP Server (MCP 服务器)
+### Servidor MCP
 
-Run the MCP server over stdio JSON-RPC (标准 JSON-RPC 传输):
+Ejecuta el servidor MCP sobre stdio JSON-RPC:
 
 ```bash
 export MNEMOSYNE_MCP_TOKEN="your-secret-token"   # optional token auth
 python -m mnemosyne.webui.mcp_server --brain-dir ./mem --namespace default
 ```
 
-The MCP server exposes **13 tools (13 个工具)**:
+El servidor MCP expone **13 herramientas**:
 
-| Tool | Description |
+| Tool | Descripción |
 | --- | --- |
-| `retain` | Write a memory (写入记忆) |
-| `recall` | Retrieve memories (检索记忆) |
-| `retain_batch` | Batch write, ~15× speedup (批量写入) |
-| `stats` | Runtime statistics — writes / recalls / token savings (运行统计) |
-| `graph_query` | Knowledge graph query (知识图谱查询) |
-| `temporal_query` | Temporal version-chain query (时序查询) |
-| `list_projects` | List isolated projects (列出项目) |
-| `doctor` | Health check — integrity, record count, disk (健康检查) |
-| `audit` | Audit-trail query (审计追踪) |
-| `confidence_history` | Confidence trajectory query (置信度历史) |
-| `memory/export-v1` | Export via Memory Exchange Protocol (记忆交换协议导出) |
-| `memory/import-v1` | Import via Memory Exchange Protocol (记忆交换协议导入) |
-| `memory/claim` | Claim memories from an external export (认领外部记忆) |
+| `retain` | Escribe una memoria |
+| `recall` | Recupera memorias |
+| `retain_batch` | Escritura por lotes, ~15× más rápido |
+| `stats` | Estadísticas de ejecución — escrituras / recuperaciones / ahorro de tokens |
+| `graph_query` | Consulta del grafo de conocimiento |
+| `temporal_query` | Consulta temporal de la cadena de versiones |
+| `list_projects` | Lista proyectos aislados |
+| `doctor` | Comprobación de estado — integridad, número de registros, disco |
+| `audit` | Consulta de la pista de auditoría |
+| `confidence_history` | Consulta de la trayectoria de confianza |
+| `memory/export-v1` | Exporta vía el Protocolo de Intercambio de Memoria |
+| `memory/import-v1` | Importa vía el Protocolo de Intercambio de Memoria |
+| `memory/claim` | Reclama memorias desde una exportación externa |
 
-Connect any MCP host (Claude Desktop, Hermes Agent, etc.) by pointing it at the stdio command above.
+Conecta cualquier host MCP (Claude Desktop, Hermes Agent, etc.) apuntándolo al comando stdio de arriba.
 
-### HTTP API (API 接口 / Web 管理界面)
+### API HTTP
 
 ```bash
 python -m mnemosyne.webui.web_server --port 9090
 ```
 
-Then open `http://127.0.0.1:9090` — a local dark dashboard (本地暗色面板) with memory browsing, graph view, stats, and a REST (表述性状态传递) endpoint. The default account `admin / mnemosyne` is created on first run; change the password after login.
+Luego abre `http://127.0.0.1:9090` — un panel local oscuro con navegación de memorias, vista de grafo, estadísticas y un endpoint REST. La cuenta predeterminada `admin / mnemosyne` se crea en la primera ejecución; cambia la contraseña después de iniciar sesión.
 
 ---
 
-## Plugins (插件)
+## Plugins
 
 ```python
 # Crypto plugin (requires cryptography; degrades gracefully otherwise)
@@ -204,7 +216,7 @@ brain = MemoryBrain("./memories", plugins=["reranker"])
 
 ---
 
-## Project Structure (项目结构)
+## Estructura del proyecto
 
 ```
 Mnemosyne7.0.0/
@@ -225,24 +237,26 @@ Mnemosyne7.0.0/
 └── docs/                     # Documentation (architecture, modules, plugins, API, deployment)
 ```
 
-## Testing (测试)
+## Pruebas
 
 ```bash
 python -m unittest discover -s tests -v
 python -m unittest tests.test_plugins -v
 ```
 
-## Documentation (文档)
+## Documentación
 
-- `README_CN.md` — 中文说明 (Chinese README)
-- `docs/` — Full docs: architecture, data model, module docs, plugin docs, API / CLI / MCP references, deployment, integration
-- `COMPLIANCE.md` — HIPAA / 等保 / GDPR / PIPL compliance mapping
-- `comparison.md` — Feature comparison with alternatives
-- `CHANGELOG.md` — Version history
-- Reports: `quality_report.md` (retrieval quality), `benchmark_report.md` (performance), `security_report.md` (security)
+- `README_CN.md` — Documentación en chino
+- `docs/` — Documentación completa: arquitectura, modelo de datos, documentación de módulos, documentación de plugins, referencias de API / CLI / MCP, despliegue, integración
+- `COMPLIANCE.md` — Mapa de cumplimiento (HIPAA / 等保 / GDPR / PIPL)
+- `comparison.md` — Comparación de funciones con alternativas
+- `CHANGELOG.md` — Historial de versiones
+- Informes: `quality_report.md` (calidad de recuperación), `benchmark_report.md` (rendimiento), `security_report.md` (seguridad)
 
-## License (许可证)
+## Licencia
 
-MIT License — see [LICENSE](LICENSE).
+Licencia MIT — consulta [LICENSE](LICENSE).
 
-Built by 胡景堃 (Jingkun Hu).
+Creado por 胡景堃 (Jingkun Hu).
+
+> Esta traducción fue generada por máquina. La versión en inglés (README.md) es la autoritativa.
