@@ -249,6 +249,7 @@ python -m unittest tests.test_plugins -v
 ## Dokumentation
 
 - `README_CN.md` — Chinesische Dokumentation (Chinese README)
+- `docs/DEPLOY_DEEPSEEK_HARNESS.md` — Bereitstellung mit DeepSeek Harness (über MCP)
 - `docs/` — Vollständige Dokumentation: Architektur, Datenmodell, Moduldokumentation, Plugin-Dokumentation, API-/CLI-/MCP-Referenzen, Bereitstellung, Integration
 - `COMPLIANCE.md` — HIPAA / 等保 / GDPR / PIPL Compliance-Zuordnung
 - `comparison.md` — Funktionsvergleich mit Alternativen

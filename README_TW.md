@@ -237,6 +237,7 @@ python -m unittest tests.test_plugins -v
 ## 文檔 (Documentation)
 
 - `README.md` — 英文說明 (English README)
+- `docs/DEPLOY_DEEPSEEK_HARNESS.md` — 部署指南：接入 DeepSeek Harness（透過 MCP）
 - `docs/` — 完整文檔：架構、資料模型、模塊文檔、插件文檔、API / CLI / MCP 參考、部署、集成
 - `COMPLIANCE.md` — HIPAA / 等保 / GDPR / PIPL 合规映射
 - `comparison.md` — 与同類框架的功能對比

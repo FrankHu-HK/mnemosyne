@@ -249,6 +249,7 @@ python -m unittest tests.test_plugins -v
 ## Documentación
 
 - `README_CN.md` — Documentación en chino
+- `docs/DEPLOY_DEEPSEEK_HARNESS.md` — Despliegue con DeepSeek Harness (vía MCP)
 - `docs/` — Documentación completa: arquitectura, modelo de datos, documentación de módulos, documentación de plugins, referencias de API / CLI / MCP, despliegue, integración
 - `COMPLIANCE.md` — Mapa de cumplimiento (HIPAA / 等保 / GDPR / PIPL)
 - `comparison.md` — Comparación de funciones con alternativas
