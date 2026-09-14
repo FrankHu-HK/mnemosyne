@@ -43,6 +43,11 @@
 - `retain` 的 schema 应含 `tags` / `confidence` / `importance` / `supersedes`。
 - `retain_batch` 的 `items` 逐项 schema 应含 `tags` / `confidence` / `importance`。
 - `recall` 的返回项应含 `memory_id` / `verification` / `tags` / `superseded_by`。
+  注意 `superseded_by` 要**取到实际值**：未被取代的记录本来就是 `null`
+  （值为 `None` 时该键不落进 dict，这是设计使然），
+  但**被取代的那条必须指向取代它的新记忆 id**。
+  7.0.1 首发版本该字段恒为 `null`（检索层轻量记录白名单漏列此字段，
+  输出侧 `.get()` 静默拿到缺省值），已在 7.0.1 勘误中修复。
 
 > **不存在** `verify_integrity` 工具 —— 完整性校验是 CLI 子命令
 > （`mnemosyne --dir <brain> verify-integrity`）。把两者混为一谈会造成假失败。
@@ -143,7 +148,7 @@ id 直接丢弃，代价只是 Path2a 的候选槽被稀释。报告时要如实
   --python <python> --brain-dir <brain> --src-root <源码根> --namespace memlife_verify
 ```
 
-它覆盖 20 项断言，四条核心判据是：
+它覆盖 21 项断言，四条核心判据是：
 
 | 判据 | 怎么看 |
 |---|---|
@@ -157,6 +162,9 @@ id 直接丢弃，代价只是 Path2a 的候选槽被稀释。报告时要如实
 - `retain_batch` 的**逐项** `tags` / `confidence` 必须生效（F8：原实现把元数据写死成 `{}`）。
 - 更正必须走 `retain(supersedes=<旧id>)`，随后旧记忆应为 `verification=superseded`
   且 `recall` 能**读到**这个字段 —— 读不到的话，模型会把被取代的旧说法当现状引用。
+- 同一条旧记忆经 `recall` 回传的 **`superseded_by` 必须等于新记忆 id**。
+  这和第 156 行的 `memory_id` 是两件事：`memory_id` 验的是"能不能定位到目标"，
+  `superseded_by` 验的是"能不能顺链条走到新说法"。7.0.1 首发时后者恒为 `null`。
 
 > **不要只看 `status=deleted` 就收工。** 遗忘的两道保险意义不同：
 > `status` 负责"检索层排除"，`confidence=0` 负责"撤回语义"。

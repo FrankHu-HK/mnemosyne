@@ -410,6 +410,32 @@ schema 补 `tags` / `confidence` / `importance`，handler 逐项透传，并在�
 > 注意这里的设计取舍：**不要**为了"避免引用旧说法"而在服务端把 superseded 记录
 > 直接过滤掉 —— 那会丢掉版本历史。正确做法是把状态**告诉模型**，由它判断。
 
+### 勘误（F9-b，7.0.1 发布后修复）
+
+7.0.1 上线后实测：`memory_id` / `verification` 正常，但
+**`superseded_by` 恒为 `null`、`version` 恒为 `1`、`flags` 恒为 `[]`**。
+
+根因不在 MCP 层（那里写的是 `r[1].get("superseded_by")`，写法没错），
+而在**检索层的轻量记录白名单** —— `mnemosyne/retrieval.py` 的
+`_RECORD_KEYS` / `_LIGHT_COLUMNS`。为了让内存里只留"检索融合所需字段"，
+这两份白名单没有收录上述字段；而 MCP 的 `recall` 投影**直接读同一份 dict**，
+于是 `.get()` 一律拿到缺省值，**全程没有任何报错**。
+
+```python
+# 实测（7.0.1 首发）
+DB 直查   : superseded_by = "fedc038e27f5b7be"   # 库里有值
+recall 返回: superseded_by = None                 # 输出侧看不到
+```
+
+修法：把 `version` / `superseded_by` / `flags` 并入两份白名单并在文件里写明
+两处必须同步。三个字段都是小标量（`None` / `int` / 短列表），而占内存大头的是
+`content`（本来就在清单里），所以内存影响可忽略。
+验收脚本增加第 21 项断言兜底。
+
+> 教训：**"轻量投影"与"对外输出"共用同一份 dict 时，少一个键就是静默的数据丢失。**
+> 今后每新增一个对外字段，都要同时检查这两份白名单；
+> 反过来，凡是"字段在库里明明有值、工具返回却是 null"的现象，先查这里。
+
 ---
 
 ## F10 —— 工具的 `namespace` 报告恒为 `"default"`
