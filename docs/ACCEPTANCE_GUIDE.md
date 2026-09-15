@@ -36,18 +36,39 @@
 
 ## 1. 握手与工具面
 
-- `initialize` 应返回 `serverInfo.name == "mnemosyne-memory"`。
-- `tools/list` 在 **7.0.1 上应为 14 个工具**。核对其中存在：
+- `initialize` 应返回 `serverInfo.name == "mnemosyne-memory"`，
+  `serverInfo.version` 应等于当前版本（7.0.2）。
+- `tools/list` 应为 **20 个工具**（上游 7.0.1 为 14 个；本机另行增补压缩引擎
+  `consolidate` / `reflect` / `dedup`，7.0.2 再增 `recall_health` / `capsule` / `expand`）。
+  核对其中存在：
   - `doctor`（完整性检查的 MCP 入口）
   - `forget`（7.0.1 新增；若缺失，说明"用户说忘记 X"这条流程**没有任何工具可调**）
+  - `recall_health`（7.0.2 新增；召回质量只读指标 —— 没有它，"召回随会话时长退化"
+    这类问题只能靠运气发现）
+  - `capsule` / `expand`（7.0.2 新增；极短上下文下的精确压缩与**逐字**展开，
+    见第 8 节）
 - `retain` 的 schema 应含 `tags` / `confidence` / `importance` / `supersedes`。
 - `retain_batch` 的 `items` 逐项 schema 应含 `tags` / `confidence` / `importance`。
-- `recall` 的返回项应含 `memory_id` / `verification` / `tags` / `superseded_by`。
+- `recall` 的 schema 应含 `budget_tokens` / `compress` / `compress_level`
+  （7.0.1 的 MCP 层**根本没有把 `budget_tokens` 传给 brain**，工具 schema 里也没写，
+  于是"按上下文预算取记忆"这条能力从工具侧完全不可达）。
+- `recall` 的返回项应含 `memory_id` / `verification` / `tags` / `superseded_by`，
+  7.0.2 起另有 `confidence_band` / `ref` / `capsule_level` / `capsule_tokens` / `lossless`。
   注意 `superseded_by` 要**取到实际值**：未被取代的记录本来就是 `null`
   （值为 `None` 时该键不落进 dict，这是设计使然），
   但**被取代的那条必须指向取代它的新记忆 id**。
   7.0.1 首发版本该字段恒为 `null`（检索层轻量记录白名单漏列此字段，
-  输出侧 `.get()` 静默拿到缺省值），已在 7.0.1 勘误中修复。
+  输出侧 `.get()` 静默拿到缺省值）；7.0.1 勘误补了白名单，7.0.2 实测确证已修。
+
+> **7.0.2 验收判据的两处语义变化（不照此调整会得到假失败）**
+>
+> 1. **无关查询不再填满 k 条。** 7.0.2 引入相关性下限（`REL_MIN_SEMANTIC=0.45`，
+>    标定自实测：相关簇 cosine min 0.5222 / 无关簇 max 0.4064）。因此
+>    `recall("舒芙蕾怎么做")` 在只有硬件/项目记忆的库上返回 **0 条**是**通过**，
+>    不是失败 —— "没找到相关记忆"比"给 5 条无关记忆"安全得多。
+> 2. **`superseded_by` 的投影验证必须用"相关查询"。** 用无关查询去召回被取代的记录
+>    会命中第 1 条（被正确剔除），从而把"已修好"误报成"未修"。
+>    判别口诀：**投影用相关查询验，下限用无关查询验。**
 
 > **不存在** `verify_integrity` 工具 —— 完整性校验是 CLI 子命令
 > （`mnemosyne --dir <brain> verify-integrity`）。把两者混为一谈会造成假失败。
@@ -173,6 +194,50 @@ id 直接丢弃，代价只是 Path2a 的候选槽被稀释。报告时要如实
 
 ---
 
+## 8. AIC 记忆胶囊：极短上下文下的精确压缩（7.0.2 新增）
+
+**验收目标**：在"只给 1~2 轮、几百 token"的极短上下文里仍然 100% 精准。
+按传统做法（压缩 = 丢记忆，或压缩 = 生成式摘要）这两件事互斥：前者让模型看不到信息，
+后者是**有损改写**（会凭空造出原文没有的数字/时间/结论）。所以判据必须落到
+**可断言的性质**上，而不是"看起来压得挺短"。
+
+### 三条硬性质（缺一条就不算达标）
+
+| 性质 | 判据 | 怎么验 |
+|---|---|---|
+| **原子守恒** | 数字 / 日期 / 金额 / 型号 / URL / 邮箱 / 引号内原话在**所有**压缩层级都完整保留 | 对同一段文本跑 `budget_tokens` = 200 → 8 的阶梯，每层都检查关键原子在场 |
+| **零幻觉（抽取式）** | 胶囊里出现的自然语言片段必须是原文的**逐字子串** | `capsule_selfcheck()` 返回 `selfcheck_ok=true`；或手工核对要点句在原文里搜得到 |
+| **无损可逆** | `expand(ref)` 逐字取回原文，并校验内容哈希 | 往返字节一致 + `verified=true`；再故意改一位哈希，必须 `verified=false` |
+
+### 操作步骤
+
+1. `retain` 一条带"可被追问的事实"的长记忆（含端口号、模型名、维度、金额、截止日期）。
+2. `capsule(memory_id=<id>, budget_tokens=40)`：
+   - `selfcheck_ok` 必须为 `true`；
+   - `text` 里必须能看到全部关键原子（`6333` / `bge-m3` / `1024` / `15000元` / `2026-12-31`）；
+   - 返回 `ref`（稳定指针）、`level`（层级）、`min_tokens`（该条的最小可行体积）。
+3. `expand(ref=...)`：`content` 必须与**库内实际内容**逐字一致，`verified=true`。
+   > 注意：写入时敏感字段会被**脱敏**（邮箱 → 掩码），所以"原文"以库内内容为准。
+   > 拿写入前的字符串去比会得到假失败。
+4. `recall(query=..., k=5, budget_tokens=40)`：
+   - `cost_report.budget_used ≤ budget_limit`，或 `budget_respected=false`（如实标注）；
+   - 装不进正文的条目必须以 `capsule_count`（已降级）或 `indexed_count`
+     （`precision_index` 里的指针+原子）出现 —— **信息不消失**；
+   - `precision_index` 里的 `atoms` 仍含关键原子。
+
+### 判据的语义边界（不要误判）
+
+- **`over_budget=true` 不是失败。** 当"原子本身比预算还大"时，实现**刻意**超预算
+  保留原子并如实标注 —— 因为丢掉原子等于丢掉"可被追问的事实"，那才是真正的失败。
+  判据应是 `tokens ≤ max(预算, min_tokens)`。
+- **`level=full` 时没有指针是正常的。** 原文整条放得下时直接给原文，不需要展开，
+  加指针反而多花约 20 token。
+- **预算口径是 CJK 感知的保守估算**（CJK 逐字计 1、拉丁按词计 1）。
+  不要再用「4 字符 ≈ 1 token」去核对 —— 那是英文经验值，会把中文低估 3~4 倍，
+  导致"预算 40 却塞进 150+ token"的假通过（7.0.2 修复的 D3）。
+
+---
+
 ## 附：验收时容易踩的假失败
 
 | 假失败 | 真相 |
@@ -205,3 +270,13 @@ id 直接丢弃，代价只是 Path2a 的候选槽被稀释。报告时要如实
 - [KNOWN_DEFECTS.md](KNOWN_DEFECTS.md) —— 各缺陷的精确代码位置、实测数据、修法
 - [RECALL_STRATEGY.md](RECALL_STRATEGY.md) —— 召回机制、接口边界、每轮召回的代价
 - [scripts/verify_memory_lifecycle.py](../scripts/verify_memory_lifecycle.py) —— 生命周期闭环验收脚本
+  （**需** Qdrant + 嵌入服务；34 项断言）
+- [scripts/verify_precision_recall.py](../scripts/verify_precision_recall.py) —— 精准/压缩**离线**回归（7.0.2 新增；
+  **不需**任何外部服务，几秒跑完，94 项断言）。改代码后的第一道预检：
+  验原子守恒、抽取式、无损可逆、预算诚实与分档、相关性下限、跨调用隔离、
+  写入去重的原子硬约束
+
+> **两道验收的分工**：离线回归验"机制性硬不变量"（改坏了必然导致记忆不准/压缩丢信息），
+> 生命周期验收验"工具面与库内落盘"（需要真实向量栈才能暴露的集成问题）。
+> 两者都要跑，缺一不可 —— 只有离线跑通，不代表 MCP 面可用；只有 MCP 跑通，
+> 也不代表机制没退化（例如"分数全塌到常数底"时 MCP 断言仍可能全绿）。
