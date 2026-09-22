@@ -37,7 +37,7 @@
 ## 1. 握手与工具面
 
 - `initialize` 应返回 `serverInfo.name == "mnemosyne-memory"`，
-  `serverInfo.version` 应等于当前版本（7.0.2）。
+  `serverInfo.version` 应等于当前版本（8.0.0）。
 - `tools/list` 应为 **20 个工具**（上游 7.0.1 为 14 个；本机另行增补压缩引擎
   `consolidate` / `reflect` / `dedup`，7.0.2 再增 `recall_health` / `capsule` / `expand`）。
   核对其中存在：

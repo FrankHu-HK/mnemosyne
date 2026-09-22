@@ -1,11 +1,11 @@
 # 部署到 GitHub 操作手册 / Deploy to GitHub Runbook
 
-本目录即 `https://github.com/FrankHu-HK/mnemosyne` 的仓库工作树（当前 **Mnemosyne OS 7.0.2**）。下文记录的是当时一次性全量替换旧版 `Mnemosyne Memory v5.1.4 20260814/` 的完整步骤，保留备查。
+本目录即 `https://github.com/FrankHu-HK/mnemosyne` 的仓库工作树（当前 **Mnemosyne OS 8.0.0**）。下文记录的是当时一次性全量替换旧版 `Mnemosyne Memory v5.1.4 20260814/` 的完整步骤，保留备查。
 
 ## 前置条件
 - 已安装 `git`（带 PATH）。
 - 已配置 GitHub 凭证（SSH key 或 `gh` 登录：`gh auth login`）。
-- 本地已切换代理（如需访问外网）：`export https_proxy=http://127.0.0.1:7897 http_proxy=http://127.0.0.1:7897`。
+- 本地已切换代理（如需访问外网）：`export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890`。
 
 ## 步骤（一次性全量替换远程仓库）
 ```bash
@@ -27,7 +27,7 @@ git rm -r --cached -q . >/dev/null 2>&1
 git add -A
 
 # 5. 提交
-git commit -m "Mnemosyne OS 7.0.2 — zero-dependency AI memory, MCP/API/CLI/Python, MIT, PyPI"
+git commit -m "Mnemosyne OS 8.0.0 — zero-dependency AI memory, MCP/API/CLI/Python, MIT, PyPI"
 
 # 6. 强制覆盖远程（全量替换旧版）
 git push -f origin main
@@ -39,7 +39,7 @@ git push -f origin main
 - 仓库根目录应直接包含：`README.md`、`README_CN.md`、`LICENSE`、`setup.py`、`mnemosyne.py`、`mnemosyne/`、`docs/` 等，**不再出现** `Mnemosyne Memory v5.1.4 20260814/` 或任何 v5.1.4 描述。
 - 徽章：PyPI / MIT / Python 3.8+ / MCP 20 Tools / 中文 均已在 README 顶部渲染。
 - 旧仓库描述（"9.58/10 Hindsight. 85% Session Recall..."）需在 GitHub 仓库 Settings → About 中手动改为：
-  `Mnemosyne OS 7.0.2 — zero-dependency, local-first AI memory system (MCP / API / CLI / Python). MIT.`
+  `Mnemosyne OS 8.0.0 — zero-dependency, local-first AI memory system (MCP / API / CLI / Python). MIT.`
 
 ## 标识清单（已落实）
 - ✅ MIT 许可证（`LICENSE` 文件 + 徽章 + 文末声明）

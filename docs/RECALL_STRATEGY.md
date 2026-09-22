@@ -125,7 +125,7 @@ total = ( n_bm25×0.12 + n_vec×0.55 + n_graph×0.10 + n_time×0.20 + conf×0.10
 
 **需要精细控制时，用 CLI 或 Python SDK，不要试图用 MCP 参数凑。**
 
-### 2.1 MCP 工具面（20 个，7.0.2）
+### 2.1 MCP 工具面（31 个，8.0.0）
 
 `retain` / `recall` / **`forget`** / `stats` / `retain_batch` / `doctor` /
 **`recall_health`** / **`capsule`** / **`expand`** / `graph_query` /
