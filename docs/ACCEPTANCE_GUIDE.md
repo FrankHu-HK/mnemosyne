@@ -38,8 +38,9 @@
 
 - `initialize` 应返回 `serverInfo.name == "mnemosyne-memory"`，
   `serverInfo.version` 应等于当前版本（8.0.0）。
-- `tools/list` 应为 **20 个工具**（上游 7.0.1 为 14 个；本机另行增补压缩引擎
-  `consolidate` / `reflect` / `dedup`，7.0.2 再增 `recall_health` / `capsule` / `expand`）。
+- `tools/list` 应为 **31 个工具** = 20 个原生 + 11 个客户端兼容（上游 7.0.1 为 14 个；
+  本机另行增补压缩引擎 `consolidate` / `reflect` / `dedup`，7.0.2 再增 `recall_health` /
+  `capsule` / `expand`，8.0.0 起并入 11 个沿用通行 Agent 记忆工具名的兼容工具）。
   核对其中存在：
   - `doctor`（完整性检查的 MCP 入口）
   - `forget`（7.0.1 新增；若缺失，说明"用户说忘记 X"这条流程**没有任何工具可调**）

@@ -54,6 +54,6 @@ def register(brain):
 `mnemosyne_plugins.<name>.plugin` 并绑定快捷属性（`vector_backend_plugin`/
 `crypto_plugin`/`reranker_plugin`）。
 
-## 测试
+## 验证
 
-`tests/test_plugins.py`。
+本仓库不随包交付单元测试套件。自检入口：`python verify.py`、`python scripts/verify_api.py`。

@@ -91,7 +91,9 @@ def _get_ns(arguments):
     """Extract namespace from per-request arguments."""
     return arguments.get("namespace") if isinstance(arguments, dict) else None
 
-# ---------- 18 tools (includes audit + forget + namespace + recall_health) ----------
+# ---------- 20 native tools (includes audit + forget + namespace + recall_health) ----------
+# Eleven more client-compatibility tools are appended below (see mcp_api.py), for
+# a total of 31 in ``tools/list``.
 TOOLS = [
     {"name":"retain","description":"写入记忆。content: 内容; mtype: 类型; tags: 标签数组（如 [\"偏好\",\"项目\"]）; confidence: 可信度0-1; importance: 重要性1-5; supersedes: 本记忆所更正的旧记忆id（更正场景，写入后旧记忆被标记 superseded）; namespace: 多租户隔离; project: 可选项目隔离",
      "inputSchema":{"type":"object","properties":{"content":{"type":"string"},"mtype":{"type":"string","enum":["semantic","episodic","procedural","preference","identity","lesson","strategy","reflective"],"default":"semantic"},"tags":{"type":"array","items":{"type":"string"}},"confidence":{"type":"number"},"importance":{"type":"integer"},"supersedes":{"type":"string"},"project":{"type":"string"},"namespace":{"type":"string"}},"required":["content"]}},

@@ -64,18 +64,19 @@ def rules(old: str, new: str) -> List[Tuple[str, str, str]]:
          rf'(^VERSION\s*=\s*"){o}(")', rf"\g<1>{n}\g<2>"),
         ("setup.py version=",
          rf'(version\s*=\s*"){o}(")', rf"\g<1>{n}\g<2>"),
-        ("MCP serverInfo version",
-         rf'("version"\s*:\s*"){o}(")', rf"\g<1>{n}\g<2>"),
-        ("JSON version field",
+        ("JSON version field (MCP serverInfo, plugin manifests, marketplace)",
          rf'("version"\s*:\s*"){o}(")', rf"\g<1>{n}\g<2>"),
         ("pyproject version",
          rf'(^version\s*=\s*"){o}(")', rf"\g<1>{n}\g<2>"),
 
         # ---- user-facing product strings ---------------------------------
-        ("Mnemosyne OS v<ver>", rf"(Mnemosyne OS v){o}", rf"\g<1>{n}"),
-        ("Mnemosyne OS <ver>", rf"(Mnemosyne OS ){o}\b", rf"\g<1>{n}"),
+        # The product logotype is ``Mnemosyne OS`` (capital M, no caduceus).
+        # The leading group also accepts a lowercase ``m`` so a tree that is
+        # mid-rename, or a document that slipped past review, still bumps.
+        ("Mnemosyne OS v<ver>", rf"((?:M|m)nemosyne OS v){o}", rf"\g<1>{n}"),
+        ("Mnemosyne OS <ver>", rf"((?:M|m)nemosyne OS ){o}\b", rf"\g<1>{n}"),
         ("Mnemosyne OS Engine v<ver>",
-         rf"(Mnemosyne OS Engine v){o}", rf"\g<1>{n}"),
+         rf"((?:M|m)nemosyne OS Engine v){o}", rf"\g<1>{n}"),
         ("Mnemosyne v<ver>", rf"(Mnemosyne v){o}\b", rf"\g<1>{n}"),
         ("Mnemosyne <ver>", rf"(Mnemosyne ){o}\b", rf"\g<1>{n}"),
         ("Mnemosyne<ver> (structure/paths)",
@@ -96,7 +97,7 @@ def rules(old: str, new: str) -> List[Tuple[str, str, str]]:
         ("确认装的是 <ver>", rf"(确认装的是 ){o}", rf"\g<1>{n}"),
         ("结合 <ver> 实际能力", rf"(结合 ){o}( 实际能力)", rf"\g<1>{n}\g<2>"),
         ("MCP 工具面（<n> 个，<ver>）",
-         rf"(MCP 工具面（20 个，){o}(）)", rf"\g<1>{n}\g<2>"),
+         rf"(MCP 工具面（31 个，){o}(）)", rf"\g<1>{n}\g<2>"),
         ("memory stack <ver>", rf"(memory stack ){o}\b", rf"\g<1>{n}"),
         ("记忆栈 <ver>", rf"(记忆栈已?确证缺陷[^）)]*){o}", rf"\g<1>{n}"),
         ("记忆栈（<ver>）", rf"(记忆栈）?\s*){o}", rf"\g<1>{n}"),
@@ -167,9 +168,11 @@ def main() -> int:
     print(f"files changed : {len(changed)}")
     print(f"substitutions : {sum(per_rule.values())}")
     print()
-    print("per rule:")
+    print("per rule (a rule with no match means that shape is absent from this")
+    print("tree -- pyproject carries no version, most localised stack nouns are")
+    print("not present, and so on.  It is not by itself a problem):")
     for label, hits in per_rule.items():
-        mark = "" if hits else "   <- matched nothing; check the declaration still exists"
+        mark = "" if hits else "   <- no match in this tree"
         print(f"  {hits:5d}  {label}{mark}")
     print()
     print("files:")

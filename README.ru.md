@@ -2,271 +2,417 @@
   <img src="assets/banner.png" alt="Mnemosyne OS" width="100%">
 </p>
 
-<p align="center">
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.md"><img src="https://img.shields.io/badge/Lang-English-blue?style=for-the-badge" alt="English"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README_CN.md"><img src="https://img.shields.io/badge/Lang-中文-red?style=for-the-badge" alt="中文"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README_TW.md"><img src="https://img.shields.io/badge/Lang-繁體中文-red?style=for-the-badge" alt="繁體中文"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.es.md"><img src="https://img.shields.io/badge/Lang-Español-orange?style=for-the-badge" alt="Español"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.ru.md"><img src="https://img.shields.io/badge/Lang-Русский-blue?style=for-the-badge" alt="Русский"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.de.md"><img src="https://img.shields.io/badge/Lang-Deutsch-lightgrey?style=for-the-badge" alt="Deutsch"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.th.md"><img src="https://img.shields.io/badge/Lang-ไทย-blue?style=for-the-badge" alt="ไทย"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.ko.md"><img src="https://img.shields.io/badge/Lang-한국어-green?style=for-the-badge" alt="한국어"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.ja.md"><img src="https://img.shields.io/badge/Lang-日本語-red?style=for-the-badge" alt="日本語"></a>
-</p>
-
-# Mnemosyne OS ☤
+# Mnemosyne OS
 
 <p align="center">
-  <a href="https://pypi.org/project/mnemosyne-os/">Mnemosyne OS</a> | <a href="https://github.com/FrankHu-HK/mnemosyne">GitHub</a> | <a href="README_CN.md">Документация на китайском</a>
+  <a href="https://pypi.org/project/mnemosyne-os/">PyPI</a> ·
+  <a href="https://github.com/FrankHu-HK/mnemosyne">GitHub</a> ·
+  <a href="README.md">English</a>
 </p>
 
 <p align="center">
   <a href="https://pypi.org/project/mnemosyne-os/"><img src="https://img.shields.io/badge/PyPI-mnemosyne--os-blue?style=for-the-badge" alt="PyPI"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License: MIT"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="Лицензия: MIT"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.8+"></a>
-  <a href="https://modelcontextprotocol.io/"><img src="https://img.shields.io/badge/MCP-20%20Tools-00ADD8?style=for-the-badge" alt="Model Context Protocol"></a>
- <a href="https://pepy.tech/projects/mnemosyne-os"><img src="https://img.shields.io/pepy/dt/mnemosyne-os?style=for-the-badge" alt="Downloads"></a>
- <a href="https://x.com/mnemosyne_oos"><img src="https://img.shields.io/badge/X-@mnemosyne_oos-black?style=for-the-badge&logo=x&logoColor=white" alt="X"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README_CN.md"><img src="https://img.shields.io/badge/Lang-中文-red?style=for-the-badge" alt="中文"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README_TW.md"><img src="https://img.shields.io/badge/Lang-繁體中文-red?style=for-the-badge" alt="繁體中文"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.es.md"><img src="https://img.shields.io/badge/Lang-Español-orange?style=for-the-badge" alt="Español"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.ru.md"><img src="https://img.shields.io/badge/Lang-Русский-blue?style=for-the-badge" alt="Русский"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.de.md"><img src="https://img.shields.io/badge/Lang-Deutsch-lightgrey?style=for-the-badge" alt="Deutsch"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.th.md"><img src="https://img.shields.io/badge/Lang-ไทย-blue?style=for-the-badge" alt="ไทย"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.ko.md"><img src="https://img.shields.io/badge/Lang-한국어-green?style=for-the-badge" alt="한국어"></a>
-  <a href="https://github.com/FrankHu-HK/mnemosyne/blob/main/README.ja.md"><img src="https://img.shields.io/badge/Lang-日本語-red?style=for-the-badge" alt="日本語"></a>
+  <a href="#-mcp-сервер"><img src="https://img.shields.io/badge/MCP-31%20Tools-00ADD8?style=for-the-badge" alt="Протокол Model Context"></a>
+  <a href="#-быстрый-старт"><img src="https://img.shields.io/badge/dependencies-0-brightgreen?style=for-the-badge" alt="Без зависимостей"></a>
+  <a href="https://pepy.tech/projects/mnemosyne-os"><img src="https://img.shields.io/pepy/dt/mnemosyne-os?style=for-the-badge" alt="Downloads"></a>
+  <a href="https://x.com/mnemosyne_oos"><img src="https://img.shields.io/badge/X-@mnemosyne_oos-black?style=for-the-badge&logo=x&logoColor=white" alt="X"></a>
 </p>
 
-**Mnemosyne OS 8.0.0** — локальная система ИИ-памяти с нулевыми зависимостями, приоритетом локального хранения, многоуровневым забыванием, хеш-цепочечным реестром, SDK плагинов, локальной веб-панелью управления и поддержкой MCP (Model Context Protocol).
+<p align="center">
+  <a href="README_TW.md"><img src="https://img.shields.io/badge/Lang-繁體中文-red?style=for-the-badge" alt="繁體中文"></a>
+  <a href="README.es.md"><img src="https://img.shields.io/badge/Lang-Español-orange?style=for-the-badge" alt="Español"></a>
+  <a href="README.ru.md"><img src="https://img.shields.io/badge/Lang-Русский-blue?style=for-the-badge" alt="Русский"></a>
+  <a href="README.de.md"><img src="https://img.shields.io/badge/Lang-Deutsch-lightgrey?style=for-the-badge" alt="Deutsch"></a>
+  <a href="README.th.md"><img src="https://img.shields.io/badge/Lang-ไทย-blue?style=for-the-badge" alt="ไทย"></a>
+  <a href="README.ko.md"><img src="https://img.shields.io/badge/Lang-한국어-green?style=for-the-badge" alt="한국어"></a>
+  <a href="README.ja.md"><img src="https://img.shields.io/badge/Lang-日本語-red?style=for-the-badge" alt="日本語"></a>
+</p>
 
-> Единственный движок ИИ-памяти, ядро которого **не требует сторонних зависимостей** (только стандартная библиотека Python 3.8+) — ни векторной базы данных, ни среды выполнения LLM (большой языковой модели), ни привязки к облаку. Работает на ноутбуке, сервере или бессерверной инфраструктуре.
+**Mnemosyne OS 8.0.0** — локальная система ИИ-памяти без зависимостей. Графовая
+память, мультимодальный приём, переранжирование, временные рассуждения,
+аудиторский журнал с хеш-цепочкой, сжатие без потерь и 31 инструмент MCP.
 
-Используйте его как **библиотеку Python**, **интерфейс командной строки (CLI)**, **HTTP API**, **MCP-сервер** или встраивайте через транспорт **MCP** stdio.
+> Единственный движок ИИ-памяти, у которого **ядро действительно не тянет
+> сторонних зависимостей** — ни векторной базы данных, ни среды выполнения LLM,
+> ни облачного аккаунта. `install_requires` — пустой список. Одинаково работает
+> на ноутбуке, на сервере и в бессерверной инфраструктуре.
+
+Используйте его как **библиотеку Python**, **CLI**, **HTTP API** или **MCP-сервер**.
+
+---
+
+## 🚀 Быстрый старт
+
+### Установка
+
+```bash
+pip install mnemosyne-os          # ядро: без сторонних зависимостей
+```
+
+### Запоминаем и вспоминаем, ничего не настраивая
+
+```python
+from mnemosyne import Memory
+
+m = Memory()                       # встроенный эмбеддер + извлекатель на правилах
+m.add("I prefer dark mode and use vim keybindings. My name is Alice.",
+      user_id="alice")
+
+for hit in m.search("what does alice prefer", filters={"user_id": "alice"})["results"]:
+    print(f"{hit['score']:.3f}  {hit['memory']}")
+```
+
+Офлайн, без API-ключа, без скачивания моделей, без установки базы данных — именно
+это делает возможным следующий раздел.
+
+### Настоящие модели подключаются только тогда, когда воспроизведение нужно усилить
+
+```python
+from mnemosyne import Memory
+
+m = Memory.from_config({
+    "llm":          {"provider": "openai", "config": {"model": "gpt-4o-mini"}},
+    "embedder":     {"provider": "openai", "config": {"model": "text-embedding-3-small"}},
+    "vector_store": {"provider": "qdrant", "config": {"url": "http://localhost:6333"}},
+    "reranker":     {"provider": "cohere", "config": {"api_key": "..."}},
+    "graph_store":  {"provider": "builtin"},
+})
+```
+
+Каждый компонент необязателен сам по себе. Когда провайдера не удаётся собрать,
+происходит откат к встроенному эквиваленту, и об этом **сообщается прямо** —
+ничего не деградирует молча:
+
+```python
+m.describe()["degraded"]
+# {'llm': {'requested': 'openai', 'used': 'rules', 'reason': 'no API key configured',
+#          'hint': 'Set MNEMOSYNE_LLM_OPENAI_API_KEY ...'}}
+```
+
+### Или управляйте из командной строки
+
+```bash
+mnemosyne init
+mnemosyne add "I prefer dark mode and vim keybindings" --user-id alice
+mnemosyne search "what does alice prefer" --user-id alice
+mnemosyne list  --user-id alice
+mnemosyne event --limit 10
+mnemosyne --agent search "preferences" --user-id alice   # JSON-конверт для циклов инструментов
+```
+
+### Или отдайте его по MCP
+
+```json
+{
+  "mcpServers": {
+    "mnemosyne": {
+      "command": "python",
+      "args": ["-m", "mnemosyne.webui.mcp_server",
+               "--brain-dir", "./mem", "--namespace", "default"],
+      "env": { "MNEMOSYNE_MCP_TOKEN": "<random 32+ chars>" }
+    }
+  }
+}
+```
+
+### Или поднимите его по HTTP
+
+```bash
+mnemosyne-web --port 9090          # консоль и REST делят один порт
+curl -X POST http://127.0.0.1:8788/v3/memories/add/ \
+  -H "Authorization: Bearer $MNEMOSYNE_API_KEY" -H "Content-Type: application/json" \
+  -d '{"messages":[{"role":"user","content":"I moved to Berlin in 2023."}],"user_id":"alice"}'
+```
+
+---
+
+## 📊 Бенчмарки
+
+Измерено стендом, поставляемым вместе с этим репозиторием. Воспроизводится
+скриптами `scripts/verify_recall_quality.py` и `scripts/verify_precision_recall.py`.
+
+| Бенчмарк | Оценка | Что измеряет |
+| --- | --- | --- |
+| LongMemEval | **96.2** | воспроизведение в длинных диалогах |
+| LoCoMo | **94.8** | память многосессионных диалогов |
+| BEAM (1M) | **68.5** | воспроизведение при бюджете контекста 1M токенов |
+| BEAM (10M) | **53.9** | воспроизведение при бюджете контекста 10M токенов |
+
+Оценки по 100-балльной шкале.
+
+---
+
+## 🧩 Возможности
 
 <table>
-<tr><td><b>Ядро без зависимостей</b></td><td>Работает только на стандартной библиотеке Python. Не требует numpy, torch, векторной БД или LLM для сохранения и извлечения воспоминаний.</td></tr>
-<tr><td><b>Многоуровневая память</b></td><td>Уровни hot / warm / cold с экономикой забывания — малозначимые воспоминания переносятся, но никогда не удаляются молча.</td></tr>
-<tr><td><b>Хеш-цепочечный реестр</b></td><td>Реестр на основе цепочки SHA-256 — <code>verify_chain()</code> обнаруживает подделку и указывает точную повреждённую запись.</td></tr>
-<tr><td><b>SDK плагинов</b></td><td><code>VectorBackendPlugin</code> / <code>CryptoPlugin</code> / <code>RerankerPlugin</code> + официальные плагины (<code>numpy_vector</code>, <code>crypto</code>, <code>reranker</code>, <code>hrr</code>, <code>async</code>, <code>context-engine</code>).</td></tr>
-<tr><td><b>MCP-сервер</b></td><td>17 инструментов поверх stdio JSON-RPC с токен-аутентификацией и многопользовательскими пространствами имён.</td></tr>
-<tr><td><b>Веб-панель управления</b></td><td>Локальная тёмная панель в технологичном стиле без внешних CDN — обслуживается из <code>web_server.py</code>.</td></tr>
-<tr><td><b>Асинхронный API</b></td><td><code>AsyncMemoryBrain</code> — обёртка asyncio для высокопроизводительного приёма данных.</td></tr>
-<tr><td><b>Оптимизация для китайского</b></td><td>Биграммная токенизация + FTS5 + встроенный словарь синонимов.</td></tr>
-<tr><td><b>Нотариус безопасности</b></td><td>Обнаруживает учётные данные, невидимый Unicode и HTML-инъекции; полеуровневое сокрытие чувствительных данных перед записью.</td></tr>
+<tr><td><b>API памяти</b></td><td><code>Memory</code> / <code>AsyncMemory</code> / <code>MemoryClient</code> с полным набором методов: <code>add</code> <code>get</code> <code>get_all</code> <code>search</code> <code>update</code> <code>delete</code> <code>delete_all</code> <code>history</code> <code>reset</code> <code>close</code> <code>from_config</code>.</td></tr>
+<tr><td><b>Четырёхмерная область видимости</b></td><td><code>user_id</code> / <code>agent_id</code> / <code>run_id</code> / <code>app_id</code> — обеспечивается <b>физической изоляцией</b>: по одному файлу SQLite на область видимости, а не общие строки с наложенным фильтром.</td></tr>
+<tr><td><b>Язык фильтров</b></td><td><code>eq</code> <code>ne</code> <code>gt</code> <code>gte</code> <code>lt</code> <code>lte</code> <code>in</code> <code>nin</code> <code>contains</code> <code>icontains</code> <code>wildcard</code> с произвольной вложенностью <code>AND</code>/<code>OR</code>/<code>NOT</code>.</td></tr>
+<tr><td><b>Однопроходное извлечение «только добавление» (ADD-only)</b></td><td>Один вызов модели на запись; памяти накапливаются и никогда не перезаписываются. Поскольку ничего не перезаписывается, плохое извлечение лишь добавляет шум — оно никогда не может уничтожить реальный факт.</td></tr>
+<tr><td><b>Графовая память, всегда включена</b></td><td>Связывание сущностей и многошаговый обход живут в одном и том же файле SQLite. Внешняя графовая база данных не требуется.</td></tr>
+<tr><td><b>Мультимодальный приём</b></td><td>Принимает форматы изображений OpenAI, Anthropic и Gemini (плюс аудио). С настроенной vision-моделью сохраняется описание; без неё сохраняется ссылка — ничего не отбрасывается.</td></tr>
+<tr><td><b>Многосигнальный поиск</b></td><td>Семантика + ключевые слова BM25 + граф сущностей + время + теги, объединённые с откалиброванными порогами релевантности и лексическим откатом.</td></tr>
+<tr><td><b>Временные рассуждения</b></td><td>Даты наблюдений, разрешение относительного времени, семантика истечения срока и цепочки версий по сущностям.</td></tr>
+<tr><td><b>Многоуровневая память</b></td><td>Уровни горячий / тёплый / холодный с экономикой забывания: малоценные памяти понижаются в уровне и сжимаются, но никогда не удаляются молча.</td></tr>
+<tr><td><b>Сжатие без потерь (AIC)</b></td><td>Сжимает память в <i>указатель + структурированные факты + атомы содержимого</i>. Числа, даты, суммы и номера моделей сохраняются на любом уровне; <code>expand()</code> побайтово восстанавливает исходный текст и проверяет его хеш.</td></tr>
+<tr><td><b>Аудиторский журнал с хеш-цепочкой</b></td><td>Цепочка SHA-256; <code>verify_integrity()</code> обнаруживает подмену и называет конкретную изменённую запись.</td></tr>
+<tr><td><b>Асинхронный API и события</b></td><td><code>AsyncMemory</code> для высокопроизводительных записей плюс сохраняемый журнал операций, чтобы принятая запись оставалась видимой между процессами.</td></tr>
+<tr><td><b>Оптимизация под китайский</b></td><td>Bigram-токенизация + FTS5 + встроенный словарь синонимов при полной поддержке латиницы.</td></tr>
+<tr><td><b>Нотариус безопасности</b></td><td>До того как запись ляжет в хранилище, обнаруживает учётные данные, невидимый Unicode и HTML-инъекции и выполняет сокрытие на уровне полей.</td></tr>
 </table>
 
 ---
 
-## Быстрая установка
+## 🔌 Интеграции
 
-### Из PyPI
+Каждый адаптер необязателен. Адаптерам **stdlib** сторонние пакеты не нужны
+вообще — они говорят по HTTP напрямую через `urllib`. Адаптеры **sdk** лениво
+импортируют свой SDK и точно сообщают, какого пакета не хватает.
 
-```bash
-pip install mnemosyne-os
-```
+### Провайдеры LLM (20)
 
-### Ядро без зависимостей (установка pip не требуется)
+| Транспорт | Провайдеры |
+| --- | --- |
+| **stdlib HTTP** | `openai` `openai_structured` `azure_openai` `azure_openai_structured` `ollama` `anthropic` `gemini` `groq` `together` `deepseek` `minimax` `xai` `sarvam` `openrouter` `litellm` `lmstudio` `vllm` |
+| **sdk** | `langchain` `aws_bedrock` |
+| **встроенный** | `rules` — детерминированный офлайн-извлекатель, поэтому `add()` работает вообще без настроенной модели |
 
-```bash
-# Core runs on the Python standard library alone
-python -c "from mnemosyne import MemoryBrain; print('Ready!')"
-```
+### Эмбеддеры (13)
 
-### Установка для разработки
+| Транспорт | Провайдеры |
+| --- | --- |
+| **stdlib HTTP** | `openai` `azure_openai` `ollama` `gemini` `vertexai` `together` `lmstudio` `huggingface` |
+| **sdk** | `fastembed` `langchain` `aws_bedrock` |
+| **встроенный** | `builtin` (128 измерений, без зависимостей, детерминированный) · `hashing` (любая размерность, офлайн) |
 
-```bash
-git clone https://github.com/FrankHu-HK/mnemosyne.git
-cd mnemosyne
-pip install -e .
-```
+### Векторные хранилища (28)
+
+| Транспорт | Хранилища |
+| --- | --- |
+| **встроенные** | `builtin` (один файл SQLite хранит и памяти, и векторы) · `memory` · `generic` (декларативный REST) |
+| **stdlib HTTP** | `qdrant` `pinecone` `elasticsearch` `opensearch` `weaviate` `upstash_vector` `turbopuffer` |
+| **sdk** | `chroma` `pgvector` `milvus` `mongodb` `redis` `valkey` `azure_ai_search` `azure_mysql` `baidu` `cassandra` `databricks` `faiss` `langchain` `neptune` `oracledb` `s3_vectors` `supabase` `vertex_ai_vector_search` |
+
+### Графовые хранилища (6)
+
+`builtin` (нативные тройки SQLite) · `neo4j` · `memgraph` · `neptune` · `kuzu` · `sparql` (любая конечная точка SPARQL 1.1)
+
+### Реранкеры (5)
+
+`llm` · `cohere` · `zero_entropy` · `huggingface` · `sentence_transformer`
+
+### Адаптеры фреймворков
+
+LangChain · LlamaIndex · CrewAI · Dify · n8n · Vercel AI SDK · Ollama · MCP (stdio + Streamable HTTP)
 
 ---
 
-## Начало работы
+## 🛠 MCP сервер
 
-### Интерфейс командной строки (CLI)
+Работает по stdio JSON-RPC:
 
 ```bash
-# Initialize the memory database
-python mnemosyne.py --dir ./mem init
-
-# Store a memory
-python mnemosyne.py --dir ./mem retain --content "Apple Inc. was founded in 1976"
-
-# Search memories
-python mnemosyne.py --dir ./mem recall "Apple" --k 5
-
-# Consolidate similar memories (pre-check)
-python mnemosyne.py --dir ./mem consolidate --dry-run
-
-# View status / health check
-python mnemosyne.py --dir ./mem status --json
-python mnemosyne.py --dir ./mem doctor --json
-
-# Knowledge graph query
-python mnemosyne.py --dir ./mem graph-query "Steve Jobs" --depth 2 --json
-
-# Ledger integrity / audit
-python mnemosyne.py --dir ./mem verify-integrity --json
-python mnemosyne.py --dir ./mem ledger-audit <memory_id>
-
-# Export / import
-python mnemosyne.py --dir ./mem export --format json --out ./memories.json
-python mnemosyne.py --dir ./mem import ./memories.json
-
-# Migrate JSONL -> SQLite
-python mnemosyne.py --dir ./mem migrate --jsonl ./mem/index.jsonl
-
-# Start the web dashboard
-python -m mnemosyne.webui.web_server --port 9090
+export MNEMOSYNE_MCP_TOKEN="your-secret-token"   # необязательно, но рекомендуется
+python -m mnemosyne.webui.mcp_server --brain-dir ./mem --namespace default
 ```
 
-### Python API
+**31 инструмент** — двадцать нативных плюс одиннадцать, которые переиспользуют
+привычные имена инструментов агентской памяти, так что существующий MCP-клиент
+можно направить на Mnemosyne OS, не переписывая определения инструментов.
+
+**Нативные (20):**
+
+| Инструмент | Назначение |
+| --- | --- |
+| `retain` | Сохранить одну память |
+| `recall` | Извлечь памяти |
+| `retain_batch` | Массовая запись, примерно в 15× быстрее |
+| `forget` | Забыть память — по id или найдя её запросом на естественном языке |
+| `capsule` | Сжать память в  указатель + факты + атомы |
+| `expand` | Побайтово восстановить исходный текст капсулы |
+| `recall_health` | Метрики качества воспроизведения только для чтения |
+| `consolidate` | Объединить почти дублирующиеся памяти в одного представителя |
+| `reflect` | Статистика, частые сущности, обнаружение конфликтов, когнитивные паттерны |
+| `dedup` | Обнаружить дубликаты и почти дубликаты |
+| `graph_query` | Обход графа знаний |
+| `temporal_query` | Запросы по цепочкам версий |
+| `list_projects` | Список изолированных проектов |
+| `doctor` | Проверка состояния — целостность, количество, диск, состояние бэкенда |
+| `stats` | Статистика выполнения |
+| `audit` | Запросы по аудиторской цепочке |
+| `confidence_history` | Траектории уверенности |
+| `memory/export-v1` | Экспорт через Memory Exchange Protocol |
+| `memory/import-v1` | Импорт через Memory Exchange Protocol |
+| `memory/claim` | Принять памяти из внешнего экспорта |
+
+**Совместимые с клиентами (11):**
+
+| Инструмент | Назначение |
+| --- | --- |
+| `add_memory` | Сохранить текст или историю диалога для пользователя/агента |
+| `search_memories` | Семантический поиск с фильтрами |
+| `get_memories` | Структурный фильтр + постраничный список |
+| `get_memory` | Получить одну по id |
+| `update_memory` | Перезаписать текст и/или метаданные |
+| `delete_memory` | Удалить одну |
+| `delete_all_memories` | Очистить область видимости |
+| `delete_entities` | Удалить сущности с каскадом |
+| `list_entities` | Список users/agents/apps/runs |
+| `list_events` | Список операций с памятью |
+| `get_event_status` | Опросить асинхронную операцию |
+
+---
+
+## 🌐 REST API на своём хостинге
+
+Один процесс, один порт, принимает заголовки авторизации `X-API-Key`, `Bearer`
+и `Token`. Консоль и API используют один и тот же слушатель.
+
+| Метод | Путь | Назначение |
+| --- | --- | --- |
+| `GET` | `/v1/status/` | Проверка живости + отчёт о текущей конфигурации |
+| `GET` | `/v1/providers/` | Все провайдеры и их текущая доступность |
+| `POST` | `/v3/memories/add/` | Извлечь и сохранить (асинхронно, возвращает id события) |
+| `POST` | `/v3/memories/search/` | Семантический поиск |
+| `POST` | `/v3/memories/get-all/` | Список с фильтрацией |
+| `GET` / `PUT` / `DELETE` | `/v3/memories/{id}/` | Получить / обновить / удалить одну |
+| `DELETE` | `/v3/memories/` | Очистить область видимости |
+| `GET` | `/v3/memories/{id}/history/` | История изменений |
+| `GET` | `/v1/event/{id}/` · `/v1/events/` | Опросить / список операций |
+| `GET` / `DELETE` | `/v2/entities/` | Список / удаление областей видимости |
+| `POST` | `/v3/graph/{add,search,get-all,delete-all}/` | Графовая память |
+| `POST` | `/v1/capsule/` · `/v1/expand/` | Сжатие без потерь |
+| `GET` | `/v1/integrity/` | Проверка журнала |
+| `GET` / `POST` / `DELETE` | `/v1/keys/` | Управление API-ключами |
+
+---
+
+## 🧠 Python API
+
+```python
+from mnemosyne import Memory, AsyncMemory, MemoryClient
+
+# --- извлечение / область видимости / фильтры ---------------------------------
+m = Memory()
+m.add([{"role": "user", "content": "I moved to Berlin in 2023."}],
+      user_id="alice", metadata={"source": "onboarding"},
+      observation_date="2023-06-01")
+m.add("The invoice number is INV-2024-001.", user_id="alice", immutable=True)
+
+hits = m.search("where does the user live",
+                filters={"user_id": "alice",
+                         "AND": [{"source": {"eq": "onboarding"}}]},
+                top_k=5, threshold=0.1, rerank=False, explain=True)
+
+# --- мультимодальность --------------------------------------------------------
+m.add([{"role": "user", "content": [
+    {"type": "text", "text": "My new desk."},
+    {"type": "image_url", "image_url": {"url": "https://example.com/desk.jpg"}},
+]}], user_id="alice")
+
+# --- графовая память ----------------------------------------------------------
+m.graph_add("Jobs founded Apple in Cupertino.", user_id="alice")
+m.graph_search("Apple", filters={"user_id": "alice"})
+
+# --- асинхронность и события --------------------------------------------------
+async def ingest():
+    am = AsyncMemory()
+    await am.add_many([{"messages": t, "options": {"user_id": "alice"}}
+                       for t in transcripts])
+```
+
+`Memory`, `AsyncMemory` и `MemoryClient` принимают также привычную форму вызова
+агентской памяти, используемую другими библиотеками памяти, поэтому код, уже
+написанный под эту форму, переключается сменой одного лишь импорта. См.
+[docs/COMPATIBILITY.md](docs/COMPATIBILITY.md).
+
+Собственные возможности движка висят на том же объекте:
 
 ```python
 from mnemosyne import MemoryBrain
 
-brain = MemoryBrain("./my_memories", enable_embeddings=False)
+brain = MemoryBrain("./memories", enable_embeddings=True)
 brain.ensure_init()
+brain.retain("His laptop is an ASUS VivoBook Pro 14", fast=True)
 
-# Store
-brain.retain("Apple Inc. was founded in 1976", fast=True)
+results = brain.recall("what are that machine's specs", k=5)
+results, cost = brain.recall("that machine's specs", k=5, budget_tokens=100)
 
-# Recall
-results = brain.recall("Apple", k=5)
-for score, record, reasons in results:
-    print(f"Score: {score:.4f} | {record['content']}")
-
-# Token-budgeted recall
-results, cost_report = brain.recall("Apple", k=5, budget_tokens=100)
-
-# Conversation history
-brain.add_conversation_turn("session-1", "user", "Tell me about Apple")
-hits = brain.search_conversations("Apple", session_id="session-1")
-
-# Context snapshot
-snapshot = brain.build_context_prompt(query="Apple", max_chars=2000)
-```
-
-### Асинхронный API
-
-```python
-import asyncio
-from plugins.async_wrapper import AsyncMemoryBrain
-
-async def main():
-    brain = AsyncMemoryBrain("./memories", enable_embeddings=False)
-    await brain.async_retain("Hello World", fast=True)
-    results = await brain.async_recall("Hello", k=5)
-    print(results)
-    brain.close()
-
-asyncio.run(main())
-```
-
-### MCP-сервер
-
-Запустите MCP-сервер поверх stdio JSON-RPC:
-
-```bash
-export MNEMOSYNE_MCP_TOKEN="your-secret-token"   # optional token auth
-python -m mnemosyne.webui.mcp_server --brain-dir ./mem --namespace default
-```
-
-MCP-сервер предоставляет **17 инструментов**:
-
-| Инструмент | Описание |
-| --- | --- |
-| `retain` | Записать воспоминание |
-| `recall` | Извлечь воспоминания |
-| `retain_batch` | Пакетная запись, ускорение ~15× |
-| `stats` | Статистика выполнения — записи / извлечения / экономия токенов |
-| `graph_query` | Запрос графа знаний |
-| `temporal_query` | Временной запрос цепочки версий |
-| `list_projects` | Список изолированных проектов |
-| `doctor` | Проверка работоспособности — целостность, число записей, диск |
-| `audit` | Запрос журнала аудита |
-| `confidence_history` | Запрос истории достоверности |
-| `memory/export-v1` | Экспорт через Memory Exchange Protocol |
-| `memory/import-v1` | Импорт через Memory Exchange Protocol |
-| `memory/claim` | Получить воспоминания из внешнего экспорта |
-| `forget` | Забыть воспоминание — уверенность становится 0 и выполняется мягкое удаление (принимает `memory_id` или `query` на естественном языке) |
-| `consolidate` | Движок сжатия · консолидация памяти — объединяет сильно похожие / синонимичные воспоминания в одно репрезентативное; исходные помечаются `consolidated` (`min_similarity`, `max_group`, `generate_summary`, `dry_run`) |
-| `reflect` | Движок сжатия · расширенная рефлексия — итоги по типу / слою / типу факта / уверенности, частые сущности, обнаружение конфликтов фактов, временная плотность; `deep=true` добавляет поиск когнитивных паттернов |
-| `dedup` | Движок сжатия · дедупликация — поиск дубликатов и почти-дубликатов по отпечатку содержимого + векторному / частотному сходству; `dry_run=true` только отчёт |
-
-Подключите любой MCP-хост (Claude Desktop, Hermes Agent и др.), указав ему указанную выше stdio-команду.
-
-### HTTP API / Веб-панель управления
-
-```bash
-python -m mnemosyne.webui.web_server --port 9090
-```
-
-Затем откройте `http://127.0.0.1:9090` — локальную тёмную панель с просмотром воспоминаний, графом, статистикой и REST-эндпоинтом. Учётная запись по умолчанию `admin / mnemosyne` создаётся при первом запуске; смените пароль после входа.
-
----
-
-## Плагины
-
-```python
-# Crypto plugin (requires cryptography; degrades gracefully otherwise)
-brain = MemoryBrain("./memories", plugins=["crypto"])
-
-# Numpy vector backend (requires numpy; optional sentence-transformers model)
-brain = MemoryBrain("./memories", plugins=["numpy_vector"])
-
-# Reranker plugin
-brain = MemoryBrain("./memories", plugins=["reranker"])
+cap = brain.capsule("<memory_id>", budget_tokens=60)   # указатель + факты + атомы
+brain.expand(cap["ref"])                                # побайтовое восстановление
+brain.verify_integrity()                                # проверка журнала SHA-256
 ```
 
 ---
 
-## Структура проекта
+## 📂 Структура проекта
 
 ```
-Mnemosyne8.0.0/
-├── mnemosyne.py              # Thin facade re-exporting the mnemosyne package
-├── mnemosyne/                # Core engine package (brain / storage / retrieval / cognitive / notary)
-├── storage/                  # Storage backends (sqlite_backend / ledger / session_store / plugin_sdk)
-├── context/                  # Context snapshots (snapshot_builder)
-├── context_engine/           # Context compression engine (engine-agnostic core + Hermes adapter)
-├── lexical/                  # Built-in synonym dictionary
-├── profiles/                 # User profile management
-├── providers/                # External provider adapter + multi-source router
-├── security/                 # Contradiction detection + security report
-├── session/                  # Conversation importer
-├── visualization/            # Knowledge tree generator
-├── plugins/                  # Extra plugins (HRR / Async)
-├── mnemosyne_plugins/        # Official plugins (numpy_vector / crypto / reranker / qdrant_backend)
-├── examples/                 # Runnable examples (Ollama / LangChain / MCP / CLI / embedded)
-└── docs/                     # Documentation (architecture, modules, plugins, API, deployment)
+mnemosyne/
+├── api/                 # API памяти: Memory / AsyncMemory / MemoryClient
+│   ├── memory.py        #   клиент на движке
+│   ├── config.py        #   MemoryConfig + проверки согласованности размерности
+│   ├── filters.py       #   язык фильтров -> предикаты
+│   ├── extract.py       #   однопроходное извлечение ADD-only
+│   ├── multimodal.py    #   разбор вложений изображений / аудио
+│   ├── events.py        #   сохраняемый журнал операций
+│   └── client.py        #   встроенный + HTTP транспорты
+├── providers/           # адаптеры необязательных компонентов (всего 72)
+│   ├── llms.py          #   20 провайдеров LLM
+│   ├── embedders.py     #   13 провайдеров эмбеддеров
+│   ├── vector_stores.py #   28 векторных хранилищ
+│   ├── graph_stores.py  #   6 графовых хранилищ
+│   ├── rerankers.py     #   5 реранкеров
+│   ├── vision.py        #   три проводных формата изображений
+│   └── transport.py     #   stdlib HTTP + повторы + сокрытие учётных данных
+├── brain.py             # MemoryBrain — фасад движка
+├── capsule.py           # AIC сжатие без потерь
+├── retrieval.py         # многосигнальное объединение и калибровка релевантности
+├── graph.py             # хранилище временных троек
+├── notary.py            # конвейер доверия перед записью
+├── cli.py               # нативный CLI
+├── api_cli.py           # CLI клиентского API
+└── webui/
+    ├── web_server.py    # хост консоли + REST
+    ├── api_routes.py    # маршруты /v1 /v2 /v3
+    ├── mcp_server.py    # 20 нативных инструментов MCP
+    └── mcp_api.py       # 11 совместимых с клиентами инструментов MCP
+
+storage/                 # бэкенд SQLite, журнал с хеш-цепочкой, SDK плагинов
+security/                # обнаружение противоречий, отчёты о безопасности
+scripts/                 # скрипты проверки
+docs/                    # руководство по приёмке, стратегия воспроизведения, совместимость
 ```
 
-## Тестирование
+---
+
+## ✅ Тесты
 
 ```bash
-python -m unittest discover -s tests -v
-python -m unittest tests.test_plugins -v
+python verify.py                              # самопроверка
+python scripts/verify_api.py                  # проверка клиентского API, полностью офлайн
+python scripts/verify_memory_lifecycle.py --brain-dir ./mem --src-root .
+python scripts/verify_precision_recall.py     # офлайн-регрессия точности
+python scripts/verify_recall_quality.py       # сквозное качество воспроизведения
 ```
 
-## Документация
+---
 
-- `README_CN.md` — описание на китайском (китайское README)
-- `docs/DEPLOY_DEEPSEEK_HARNESS.md` — Развёртывание с DeepSeek Harness (через MCP)
-- `docs/KNOWN_DEFECTS.md` — Подтверждённые дефекты стека памяти 8.0.0: факты, измерения, влияние и исправления
-- `docs/RECALL_STRATEGY.md` — Механика поиска и стратегия инъекции на каждом ходу
-- `docs/ACCEPTANCE_GUIDE.md` — Руководство по приёмке (со `scripts/verify_memory_lifecycle.py`)
-- `docs/` — Полная документация: архитектура, модель данных, документация по модулям, плагинам, справочники API / CLI / MCP, развёртывание, интеграция
-- `COMPLIANCE.md` — соответствие HIPAA / 等保 / GDPR / PIPL
-- `comparison.md` — сравнение возможностей с аналогами
-- `CHANGELOG.md` — история версий
-- Отчёты: `quality_report.md` (качество извлечения), `benchmark_report.md` (производительность), `security_report.md` (безопасность)
+## 📚 Документация
 
-## Лицензия
+- [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md) — привычная форма вызова агентской памяти
+- [docs/ACCEPTANCE_GUIDE.md](docs/ACCEPTANCE_GUIDE.md) — критерии приёмки и скрипт для каждого
+- [docs/RECALL_STRATEGY.md](docs/RECALL_STRATEGY.md) — как собирается поиск и как расходуется бюджет
+- [docs/KNOWN_DEFECTS.md](docs/KNOWN_DEFECTS.md) — подтверждённые дефекты, с измерениями и исправлениями
+- [docs/DEPLOY_DEEPSEEK_HARNESS.md](docs/DEPLOY_DEEPSEEK_HARNESS.md) — пошаговое развёртывание MCP
+- [CHANGELOG.md](CHANGELOG.md) — история версий
 
-Лицензия MIT — см. [LICENSE](LICENSE).
+---
 
-Автор: Mnemosyne OS contributors.
+## 📄 Лицензия
 
-> Этот перевод сгенерирован машиной. Авторитетной версией является английская (README.md).
+MIT License — see [LICENSE](LICENSE).
+
+Создано участниками Mnemosyne OS.

@@ -37,13 +37,13 @@ git push -f origin main
 
 ## 验证（推送后）
 - 仓库根目录应直接包含：`README.md`、`README_CN.md`、`LICENSE`、`setup.py`、`mnemosyne.py`、`mnemosyne/`、`docs/` 等，**不再出现** `Mnemosyne Memory v5.1.4 20260814/` 或任何 v5.1.4 描述。
-- 徽章：PyPI / MIT / Python 3.8+ / MCP 20 Tools / 中文 均已在 README 顶部渲染。
+- 徽章：PyPI / MIT / Python 3.8+ / MCP 31 Tools / 中文 均已在 README 顶部渲染。
 - 旧仓库描述（"9.58/10 Hindsight. 85% Session Recall..."）需在 GitHub 仓库 Settings → About 中手动改为：
   `Mnemosyne OS 8.0.0 — zero-dependency, local-first AI memory system (MCP / API / CLI / Python). MIT.`
 
 ## 标识清单（已落实）
 - ✅ MIT 许可证（`LICENSE` 文件 + 徽章 + 文末声明）
 - ✅ PyPI 标识（`pip install mnemosyne-os` + PyPI 徽章）
-- ✅ 接口标识：MCP（20 tools）、API（HTTP / REST）、CLI、Python（库 / Async）
+- ✅ 接口标识：MCP（31 tools = 20 原生 + 11 客户端兼容）、API（HTTP / REST）、CLI、Python（库 / Async）
 - ✅ 中英文切换按钮：README.md ↔ README_CN.md 互链徽章
 - ✅ 100% 沿用 hermes-agent 的 README 版式（居中 banner、徽章行、特性表、语言切换）

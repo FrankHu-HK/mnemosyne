@@ -49,6 +49,7 @@ from cryptography.fernet import Fernet
 print(Fernet.generate_key().decode())
 ```
 
-## 测试
+## 验证
 
-`tests/test_plugins.py`、`security/report.py` 的加密往返测试（需安装 `cryptography`）。
+本仓库不随包交付单元测试套件。字段级脱敏与加密往返由 `security/report.py` 覆盖；
+自检入口：`python verify.py`（需安装 `cryptography` 才启用本插件，缺失时优雅降级）。

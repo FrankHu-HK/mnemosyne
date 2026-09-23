@@ -47,6 +47,7 @@ async with AsyncMemoryBrainContext("./mem") as brain:
     await brain.async_retain("内容")
 ```
 
-## 测试
+## 验证
 
-`tests/test_async_api.py`。
+本仓库不随包交付单元测试套件。自检入口：`python verify.py`、`python scripts/verify_api.py`
+（客户端 API，全离线）、`python scripts/verify_memory_lifecycle.py`。

@@ -39,6 +39,6 @@ brain = MemoryBrain("./mem", plugins=["reranker"])
 该插件在五路融合结果之上工作，无需外部 cross-encoder 模型。`rerank()` 接受
 `(score, record, reasons)` 二元或三元组，兼容不同结果形态。
 
-## 测试
+## 验证
 
-`tests/test_plugins.py`。
+本仓库不随包交付单元测试套件。重排效果由 `scripts/verify_recall_quality.py` 覆盖。
