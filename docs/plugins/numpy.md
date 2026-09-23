@@ -40,6 +40,7 @@ brain = MemoryBrain("./mem", plugins=["numpy_vector"])
 - `numpy`（可选，缺失降级）。
 - `sentence-transformers`（可选，缺失回退哈希编码）。
 
-## 测试
+## 验证
 
-`tests/test_plugins.py`、`tests/test_semantic_retrieval.py`。
+本仓库不随包交付单元测试套件。语义检索回归由 `scripts/verify_precision_recall.py`
+与 `scripts/verify_recall_quality.py` 覆盖。

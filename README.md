@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/banner.png" alt="mnemosyne OS" width="100%">
+  <img src="assets/banner.png" alt="Mnemosyne OS" width="100%">
 </p>
 
-# mnemosyne OS
+# Mnemosyne OS
 
 <p align="center">
   <a href="https://pypi.org/project/mnemosyne-os/">PyPI</a> ·

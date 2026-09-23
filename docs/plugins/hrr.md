@@ -37,6 +37,6 @@ RandomState，无 numpy 用纯 Python 回退）。
 `HRRPlugin` 提供 `encode`/`store`/`probe`/`reason` 与 `available()`（恒 True，
 有/无 numpy 均可工作）。
 
-## 测试
+## 验证
 
-`tests/test_hrr_plugin.py`。
+本仓库不随包交付单元测试套件。自检入口：`python verify.py`、`python scripts/verify_api.py`。
